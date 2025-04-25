@@ -436,7 +436,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     readingTime: Schema.Attribute.String;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String;
-    topic: Schema.Attribute.Relation<'oneToOne', 'api::topic.topic'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -542,6 +541,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
 export interface ApiTopicTopic extends Struct.CollectionTypeSchema {
   collectionName: 'topics';
   info: {
+    description: '';
     displayName: 'Topic';
     pluralName: 'topics';
     singularName: 'topic';
@@ -550,7 +550,6 @@ export interface ApiTopicTopic extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>;
     articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
     category: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
@@ -563,8 +562,8 @@ export interface ApiTopicTopic extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.String;
-    subtopics: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
     title: Schema.Attribute.String;
+    topics: Schema.Attribute.Relation<'oneToMany', 'api::topic.topic'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

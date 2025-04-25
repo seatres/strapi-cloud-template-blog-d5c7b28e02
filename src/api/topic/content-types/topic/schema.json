@@ -4,7 +4,8 @@
   "info": {
     "singularName": "topic",
     "pluralName": "topics",
-    "displayName": "Topic"
+    "displayName": "Topic",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,14 +21,15 @@
       "type": "string"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "category": {
       "type": "string"
@@ -37,16 +39,10 @@
       "relation": "oneToMany",
       "target": "api::article.article"
     },
-    "subtopics": {
+    "topics": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::article.article"
-    },
-    "article": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::article.article",
-      "mappedBy": "topic"
+      "target": "api::topic.topic"
     }
   }
 }
